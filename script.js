@@ -1,4 +1,4 @@
-JavaScript
+
 /**
  * Universidad - Facultad de Ingeniería
  * Asignatura: Introducción a la Computación Gráfica
@@ -191,7 +191,7 @@ function generateFigure() {
 // Número de lados de cada polígono
   for (let i = 0; i < N; i++) {
 
-    let angle = (2 * Math.PI * (i + 1)) / N;
+    let angle = (2 * Math.PI * i) / N;
 
     let px = cx + R * Math.cos(angle);
     let py = cy + R * Math.sin(angle);
@@ -201,3 +201,9 @@ function generateFigure() {
     drawPolygon(polygon);
   }
 }
+// ===============================
+// EJECUCIÓN
+// ===============================
+window.onload = function () {
+    generateFigure(ctx, W, H);
+};
