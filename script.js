@@ -98,3 +98,27 @@ function plotCirclePoints(cx, cy, x, y) {
   drawPixel(ctx, cx + y, cy - x);
   drawPixel(ctx, cx - y, cy - x);
 }
+// ===============================
+// GENERACIÓN DE POLÍGONOS
+// ===============================
+/**
+ * Calcula los vértices de un polígono regular
+ * 
+ */
+function getPolygonVertices(cx, cy, sides, radius) {
+
+  let vertices = [];
+
+  for (let i = 0; i < sides; i++) {
+
+    // Ángulo correspondiente a cada vértice
+    let angle = (2 * Math.PI * i) / sides;
+
+    vertices.push({
+      x: Math.round(cx + radius * Math.cos(angle)),
+      y: Math.round(cy + radius * Math.sin(angle))
+    });
+  }
+
+  return vertices;
+}
