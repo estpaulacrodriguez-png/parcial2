@@ -122,3 +122,21 @@ function getPolygonVertices(cx, cy, sides, radius) {
 
   return vertices;
 }
+
+// ===============================
+// DIBUJO DE POLÍGONO
+// ===============================
+/**
+ * 
+ * El operador módulo (%) permite cerrar la figura
+ */
+function drawPolygon(vertices) {
+
+  for (let i = 0; i < vertices.length; i++) {
+
+    let p1 = vertices[i];
+    let p2 = vertices[(i + 1) % vertices.length];
+
+    bresenhamLine(p1.x, p1.y, p2.x, p2.y);
+  }
+}
