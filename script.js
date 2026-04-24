@@ -1,9 +1,42 @@
-// ===============================
-// /**
- // Nombre: Paula Catalina Rodríguez Avendaño
- // Codigo: 6001083
- // Asignatura: Computación Gráfica
-// ===============================
+JavaScript
+/**
+ * Universidad - Facultad de Ingeniería
+ * Asignatura: Introducción a la Computación Gráfica
+ * Estudiante: Paula Catalina Rodríguez Avendaño
+ * * Este código debe ser estructurado de forma modular.
+ */
+
+// Única función autorizada para dibujar
+function plotPixel(ctx, x, y, color = "#1a1a1a") {
+    ctx.fillStyle = color;
+    ctx.fillRect(Math.floor(x), Math.floor(y), 1, 1);
+}
+
+/**
+ * Retorna los centros donde se ubicarán los polígonos
+ * @param {number} r - Radio de la órbita
+ * @param {number} n - Cantidad de polígonos
+ * @returns {Array} [{x, y}, ...]
+ */
+function getOrbitalPositions(r, n) {
+    // Implementar lógica de distribución circular
+}
+
+/**
+ * Algoritmo de Bresenham para líneas
+ */
+function bresenhamLine(x0, y0, x1, y1, color) {
+    // Implementación obligatoria por el estudiante
+}
+
+/**
+ * Algoritmo de Punto Medio para circunferencias
+ */
+function midpointCircle(centerX, centerY, r, color) {
+    // Implementación obligatoria por el estudiante
+}
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -138,5 +171,33 @@ function drawPolygon(vertices) {
     let p2 = vertices[(i + 1) % vertices.length];
 
     bresenhamLine(p1.x, p1.y, p2.x, p2.y);
+  }
+}
+// ===============================
+// FUNCIÓN PRINCIPAL
+// ===============================
+function generateFigure() {
+// Limpia el canvas antes de dibujar
+  ctx.clearRect(0, 0, W, H);
+
+  let cx = W / 2;
+  let cy = H / 2;
+// Radio de la circunferencia 
+  let R = Math.floor(Math.random() * 100) + 150;
+  let N = Math.floor(Math.random() * 7) + 4;
+  let K = Math.floor(Math.random() * 5) + 3;
+// Número de polígonos
+  midpointCircle(cx, cy, R);
+// Número de lados de cada polígono
+  for (let i = 0; i < N; i++) {
+
+    let angle = (2 * Math.PI * (i + 1)) / N;
+
+    let px = cx + R * Math.cos(angle);
+    let py = cy + R * Math.sin(angle);
+
+    let polygon = getPolygonVertices(px, py, K, 25);
+
+    drawPolygon(polygon);
   }
 }
