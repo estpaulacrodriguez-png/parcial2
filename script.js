@@ -42,7 +42,7 @@ function bresenhamLine(x0, y0, x1, y1) {
 
     if (e2 < dx) {
       err += dx;
-     
+      y0 += sy;
     }
   }
 }
