@@ -83,3 +83,18 @@ function midpointCircle(cx, cy, r) {
     x++;
   }
 }
+/**
+ * Dibuja los 8 puntos simétricos de una circunferencia
+ */
+function plotCirclePoints(cx, cy, x, y) {
+
+  drawPixel(ctx, cx + x, cy + y);
+  drawPixel(ctx, cx - x, cy + y);
+  drawPixel(ctx, cx + x, cy - y);
+  drawPixel(ctx, cx - x, cy - y);
+
+  drawPixel(ctx, cx + y, cy + x);
+  drawPixel(ctx, cx - y, cy + x);
+  drawPixel(ctx, cx + y, cy - x);
+  drawPixel(ctx, cx - y, cy - x);
+}
